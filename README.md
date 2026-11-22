@@ -6,6 +6,18 @@ This repository documents practical investigations performed in an isolated virt
 
 ## Lab Architecture
 
+```mermaid
+flowchart TB
+    V["VirtualBox Host"]
+    W["Wazuh Server<br/>192.168.100.10<br/>Manager + Dashboard"]
+    K["Kali Linux<br/>192.168.100.20<br/>Wazuh Agent"]
+
+    V --> W
+    V --> K
+    W <-->|SOC-LAB Internal Network| K
+```
+
+
 The laboratory consists of two VirtualBox virtual machines connected through an isolated internal network.
 
 | Component | Technology | IP Address |
