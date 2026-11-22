@@ -66,3 +66,11 @@ The alert correctly identified a successful sudo execution. However, the activit
 - Privileged command analysis
 - Security event classification
 - SOC Level 1 triage
+
+## 8. Evidence
+
+The following screenshot shows the original sudo event collected by Wazuh.
+
+<img width="635" height="607" alt="image" src="https://github.com/user-attachments/assets/651f13d6-da69-42a7-bed8-57f1b2df150f" />
+
+Security Note: All IP addresses, usernames, and hostnames shown in this report belong to an isolated, authorized laboratory environment.
