@@ -115,7 +115,7 @@ The Filebeat connection test succeeded, and the Dashboard subsequently displayed
 
 This demonstrated how infrastructure resource exhaustion can affect SIEM alert visibility.
 
-### Evidence
+## Evidence
 
 ### 01 — SSH Configuration
 
@@ -144,4 +144,26 @@ Wazuh generated Level 10 alerts associated with repeated authentication failures
 
 <img width="1259" height="679" alt="04-correlation-alert" src="https://github.com/user-attachments/assets/1797b722-558d-48fa-b2f5-22bfe74b857c" />
 
+## Incident Assessment
 
+The investigation identified six failed SSH authentication attempts originating from the local loopback interface (`127.0.0.1`).
+
+Wazuh successfully detected the individual authentication failures through Rule 5760 and generated two additional Level 10 alerts through Rule 2502.
+
+The activity was intentionally generated in an authorized laboratory environment. Therefore, no external attacker or unauthorized access was identified.
+
+During the investigation, a storage exhaustion issue affected SIEM alert visibility. After recovering disk space and validating the Filebeat connection, the missing alerts became visible in the Wazuh Dashboard.
+
+## Lessons Learned
+
+- Analyze original authentication logs before drawing conclusions from SIEM alerts.
+- Distinguish individual authentication failures from higher-severity detection rules.
+- Validate timestamps, source IP addresses, usernames, and MITRE ATT&CK mappings.
+- Monitor SIEM infrastructure health, especially disk utilization and log ingestion.
+- Preserve investigation evidence and document operational issues that affect detection visibility.
+
+## Conclusion
+
+This lab demonstrated how a SOC Analyst Level 1 can investigate repeated SSH authentication failures using Wazuh SIEM.
+
+It also highlighted the importance of maintaining reliable log collection and indexing infrastructure. Security monitoring depends not only on detection rules but also on the availability and health of the underlying systems.
